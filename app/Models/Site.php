@@ -5,42 +5,39 @@ namespace App\Models;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Log;
 
 class Site extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','name','url','status'];
+    protected $fillable = ['user_id','name','url','status','consumer_key','consumer_secret','key_id','key_permissions','token'];
 
-    public function getApiKey()
+    public function getConsumerKey()
     {
-        if ( empty( $this->api_key ) ){
+        if ( empty( $this->consumer_key ) ){
             return null;
         }
 
         try{
-            return Crypt::decryptString( $this->api_key );
+            return Crypt::decryptString( $this->consumer_key );
         } catch ( DecryptException $e ){
-            Log::error( 'Unable to decrypt API key.' );
-            Log::error( $e->getMessage() );
-
+            Log::error( 'Unable to decrypt consumer key.' . $e->getMessage() );
             return null;
         }
     }
 
-    public function getApiSecret()
+    public function getConsumerSecret()
     {
-        if ( empty( $this->api_secret ) ){
+        if ( empty( $this->consumer_secret ) ){
             return null;
         }
 
         try{
-            return Crypt::decryptString( $this->api_secret );
+            return Crypt::decryptString( $this->consumer_secret );
         } catch ( DecryptException $e ){
-            Log::error( 'Unable to decrypt API secret.' );
-            Log::error( $e->getMessage() );
-
+            Log::error( 'Unable to decrypt consumer secret.' . $e->getMessage() );
             return null;
         }
     }
