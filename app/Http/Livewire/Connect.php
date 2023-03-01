@@ -48,8 +48,6 @@ class Connect extends Component
             'callback_url=' . $app_url . '/keys/' . $site['token'];
         $url = $this->url . '/' . $string;
 
-        Log::debug('URL:: ' . $string );
-
         redirect( $url );
     }
 
