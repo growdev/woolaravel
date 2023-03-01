@@ -40,7 +40,7 @@ php artisan serve
 # Working with local sites
 
 If you set up a Laravel site with Valet's default TLD (Example:  https://woolaravel.valet), that URL will be used as the OAUTH callback.
-WooCommerce's code in  `WC_Auth::post_consumer_data()` uses `wp_safe_remote_post()` to send the data. This function does not consider `.valet` to be a safe TLD causing an exception will be thrown on the WooCommerce side.
+WooCommerce's code in  `WC_Auth::post_consumer_data()` uses `wp_safe_remote_post()` to send the data. This function does not consider `.valet` to be a safe TLD causing an exception to be thrown on the WooCommerce side.
 
 You can change your Valet's TLD to one considered safe by WordPress, or in file `wp-includes/http.php` comment out line 87 of function `wp_safe_remote_post()`:
 ```php
