@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Connect;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
@@ -34,13 +35,4 @@ Route::middleware([
     Route::get('/connect', function(){ return view( 'connect' ); })->name('connect');
 });
 
-Route::post('/keys', function () {
-
-    // TODO save key_id, user_id, consumer_key, consumer_secret, key_permissions
-
-    $data = request()->toArray();
-    $site['user_id'] = auth()->user()->getAuthIdentifier();
-
-
-    return view('welcome');
-});
+Route::post('/keys/{site:token}', [Connect::class, 'store'])->name('store');

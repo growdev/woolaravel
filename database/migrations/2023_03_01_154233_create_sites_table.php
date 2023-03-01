@@ -19,10 +19,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('url');
             $table->string('status');
-            $table->text('api_key')->nullable();
-            $table->string('api_secret')->nullable();
+            $table->mediumText('consumer_key')->nullable();
+            $table->mediumText('consumer_secret')->nullable();
             $table->integer('key_id')->nullable();
             $table->string('key_permissions')->nullable();
+            $table->string('token')->unique();
             $table->timestamps();
         });
     }
