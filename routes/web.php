@@ -35,8 +35,12 @@ Route::middleware([
 });
 
 Route::post('/keys', function () {
-    $req = request();
-    Log::debug( 'Request URL: ' . Request::server('HTTP_REFERER') );
-    Log::debug('Request POST: ' . print_r( $req->toArray(), true ) );
+
+    // TODO save key_id, user_id, consumer_key, consumer_secret, key_permissions
+
+    $data = request()->toArray();
+    $site['user_id'] = auth()->user()->getAuthIdentifier();
+
+
     return view('welcome');
 });

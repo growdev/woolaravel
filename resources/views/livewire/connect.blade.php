@@ -1,4 +1,10 @@
 <div>
+    <label for="company-website" class="block text-sm font-medium text-gray-700 mt-5">Name for your store:</label>
+    <div class="relative mt-1 rounded-md shadow-sm">
+        <input wire:model="name" type="text" name="name" id="name" class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500  sm:text-sm" placeholder="">
+        @error('name') <span class="error">{{ $message }}</span> @enderror
+    </div>
+
     <label for="company-website" class="block text-sm font-medium text-gray-700 mt-5">Your store's URL:</label>
     <div class="relative mt-1 rounded-md shadow-sm">
         <input wire:model="url" type="text" name="url" id="url" class="block w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500  sm:text-sm" placeholder="https://www.example.com">
