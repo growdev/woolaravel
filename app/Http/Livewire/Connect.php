@@ -2,14 +2,18 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Site;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class Connect extends Component
 {
+    public string $name;
+
     public string $url;
 
     protected $rules = [
+        'name' => 'required',
         'url' => 'required|url',
     ];
 
@@ -34,7 +38,13 @@ class Connect extends Component
             'callback_url=' . $app_url . '/keys';
         $url = $this->url . '/' . $string;
 
-        Log::info('Trying URL: ' . $url );
+        // Save attempt as a new site.
+        $site['user_id'] = auth()->user()->getAuthIdentifier();
+        $site['name'] = $this->name;
+        $site['url']  = $this->url;
+        $site['status'] = 'pending';
+
+        Site::firstOrCreate( $site );
 
         redirect( $url );
     }
