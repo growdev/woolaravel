@@ -8,7 +8,7 @@
                         <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Name</th>
                         <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-gray-900">URL</th>
                         <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-gray-900">Status</th>
-                        <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-gray-900">Orders</th>
+                        <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-gray-900">Updated At</th>
                         <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
                             <span class="sr-only">View</span>
                         </th>
@@ -31,7 +31,7 @@
                                     </span>
                                 @endif
                             </td>
-                            <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-500">23,456</td>
+                            <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-500">{{ $site->updated_at }}</td>
                             <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                                 <a href="/view/{{ $site->id }}" class="text-indigo-600 hover:text-indigo-900">View<span class="sr-only">, {{ $site->name }}p</span></a>
                             </td>

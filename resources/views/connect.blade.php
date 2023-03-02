@@ -9,9 +9,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-6">
                 <div class="px-4 sm:px-6 lg:px-8 py-6 text-center">
                     <h2 class="mx-10">Connect a WooCommerce Site </h2>
-
-                    @livewire('connect')
-
+                    <livewire:connect />
                 </div>
             </div>
         </div>
