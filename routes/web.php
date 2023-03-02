@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Connect;
+use App\Models\Site;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,11 +29,12 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/view', function () {
-        return view('view');
+    Route::get('/connect', function() {
+        return view( 'connect' );
+    })->name('connect');
+    Route::get('/view/{site}', function (Site $site) {
+        return view('view', ['site'=>$site]);
     })->name('view');
-
-    Route::get('/connect', function(){ return view( 'connect' ); })->name('connect');
 });
 
 Route::post('/keys/{site:token}', [Connect::class, 'store'])->name('store');
