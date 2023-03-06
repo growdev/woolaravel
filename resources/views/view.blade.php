@@ -22,5 +22,14 @@
             </div>
         </div>
     </div>
+    <div class="py-1">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-6">
+                <div class="px-4 sm:px-6 lg:px-8 py-6">
+                    <livewire:products :site="$site"/>
+                </div>
+            </div>
+        </div>
+    </div>
 
-</x-app-layout>>
+</x-app-layout>
