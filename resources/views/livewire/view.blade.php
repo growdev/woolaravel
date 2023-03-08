@@ -30,8 +30,9 @@
                 </div>
             </dl>
         </div>
-        <div class="px-4 py-5 w-24">
+        <div class="px-4 py-5 flex justify-between">
             <a href="{{ route('dashboard') }}" class="block rounded-md bg-indigo-600 py-1.5 px-3 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Back</a>
+            <a wire:click="deleteSite" href="" class="block rounded-md bg-red-200 border-1 border-red-600 py-1.5 px-3 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600">Delete site</a>
         </div>
     </div>
 </div>

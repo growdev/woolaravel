@@ -17,6 +17,13 @@
                             <a href="/connect" class="block rounded-md bg-indigo-600 py-1.5 px-3 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Connect site</a>
                         </div>
                     </div>
+
+                    @if (session()->has('success'))
+                        <div class="alert alert-success py-4 border-1 mt-2 bg-green-300 rounded-md px-3 color-green-800">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
                     <livewire:dashboard />
                 </div>
             </div>
