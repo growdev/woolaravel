@@ -27,7 +27,6 @@ class Products extends Component
             'per_page' => 40,
         ];
 
-
         $this->products = convert_array( $woocommerce->get('products', $args ) );
 
     }

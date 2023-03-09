@@ -35,9 +35,7 @@ class AddProduct extends Component
 
         $args = [];
 
-        // TODO change this Array/Objects response to Array/Arrays
-        // When Livewire hydrates the data it converts it to Array/Arrays
-        $this->categories = $woocommerce->get('products/categories', $args );
+        $this->categories = convert_array( $woocommerce->get('products/categories', $args ) );
     }
 
     public function render()

@@ -94,11 +94,7 @@
                             <select wire:model.defer="category" id="category" name="category" autocomplete="category" class="block w-full max-w-lg rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                                 <option>-- Select a Category --</option>
                                 @foreach ( $categories as $category )
-                                    @if ( is_array( $category) )
                                         <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
-                                    @else
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endif
                                 @endforeach
                             </select>
                         </div>
