@@ -12,6 +12,11 @@
                     @if ( empty( $products ) )
                         <h1>Products not loaded.</h1>
                     @else
+                        @if ( session()->has('message' ))
+                        <div class="alert">
+                            {{ session('message') }}
+                        </div>
+                        @endif
 
                         <table class="min-w-full divide-y divide-gray-300">
                             <thead>
@@ -30,14 +35,14 @@
 
                             @foreach ( $products as $product )
                                 <tr>
-                                    <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-500 sm:pl-0"><a href="{{ $site->url }}/wp-admin/post.php?post={{ $product->id }}&action=edit" class="text-indigo-600 hover:text-indigo-900">{{ $product->id }}</a></td>
-                                    <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">{{ $product->name }}</td>
-                                    <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ Illuminate\Support\Str::substr( $product->date_created, 0, 10) }}</td>
-                                    <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ $product->type }}</td>
-                                    <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ $product->status }}</td>
-                                    <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">${{ $product->price }}</td>
-                                    <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ $product->sku }}</td>
-                                    <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">Delete</td>
+                                    <td class="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-500 sm:pl-0"><a href="{{ $site->url }}/wp-admin/post.php?post={{ $product['id'] }}&action=edit" class="text-indigo-600 hover:text-indigo-900">{{ $product['id'] }}</a></td>
+                                    <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">{{ $product['name'] }}</td>
+                                    <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ Illuminate\Support\Str::substr( $product['date_created'], 0, 10) }}</td>
+                                    <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ $product['type'] }}</td>
+                                    <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ $product['status'] }}</td>
+                                    <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">${{ $product['price'] }}</td>
+                                    <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{{ $product['sku'] }}</td>
+                                    <td class="whitespace-nowrap px-2 py-2 text-sm text-gray-500"><button wire:click="deleteProduct({{ $product['id'] }})" class="">Delete</button></td>
                                 </tr>
                             @endforeach
 
